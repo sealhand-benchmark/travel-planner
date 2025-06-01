@@ -1,1 +1,1 @@
-https://github.com/sealhand-benchmark/trip-easy-guide
+https://github.com/sealhand-benchmark/travel-planner
