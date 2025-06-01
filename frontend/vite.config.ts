@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     allowedHosts: [
-      'ec2-13-125-54-118.ap-northeast-2.compute.amazonaws.com',
+      'c2-43-203-249-46.ap-northeast-2.compute.amazonaws.com',
       'localhost'
     ],
   },

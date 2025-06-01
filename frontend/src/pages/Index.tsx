@@ -54,7 +54,7 @@ const Index = () => {
     // 컴포넌트 마운트 시 세션 ID 생성
     const initializeSession = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/chat/session_id', {
+        const response = await fetch('http://backend:8000/api/chat/session_id', {
           method: 'POST',
         });
         const data = await response.json();
@@ -110,7 +110,7 @@ const Index = () => {
     }
 
     const eventSource = new EventSource(
-      `http://localhost:8000/api/chat/response?session_id=${sessionId}&user_input=${encodeURIComponent(content)}`
+      `http://backend:8000/api/chat/response?session_id=${sessionId}&user_input=${encodeURIComponent(content)}`
     );
     eventSourceRef.current = eventSource;
 
