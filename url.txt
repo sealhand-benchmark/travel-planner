@@ -5,4 +5,4 @@ https://github.com/sealhand-benchmark/travel-planner
 http://ec2-43-203-249-46.ap-northeast-2.compute.amazonaws.com:8080
 
 - Web(BE) Deploy
-http://ec2-43-203-249-46.ap-northeast-2.compute.amazonaws.com:8080
+http://ec2-43-203-249-46.ap-northeast-2.compute.amazonaws.com:8000/docs
