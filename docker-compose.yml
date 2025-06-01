@@ -25,29 +25,8 @@ services:
     depends_on:
       - redis
       - postgres
-    environment:
-      - LLM_PROVIDER=openai
-      - LLM_MODEL=gpt-4o
-      - LANGFUSE_SECRET_KEY=sk-lf-3868285f-e279-4a74-bcda-da8f6e71adf1
-      - LANGFUSE_PUBLIC_KEY=pk-lf-ebca7cac-c19b-448d-b0ed-9a80af4e0762
-      - LANGFUSE_HOST=https://us.cloud.langfuse.com
-
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - GEMINI_API_KEY=${GEMINI_API_KEY}
-
-      - KAKAO_API_REST_KEY=${KAKAO_API_REST_KEY}
-      - KAKAO_API_JS_KEY=${KAKAO_API_JS_KEY}
-      - KAKAO_API_ADMIN_KEY=${KAKAO_API_ADMIN_KEY}
-      - KAKAO_REDIRECT_URI=${KAKAO_REDIRECT_URI}
-      - KAKAO_CLIENT_SECRET=${KAKAO_CLIENT_SECRET}
-
-      - POSTGRES_HOST=postgres
-      - POSTGRES_PORT=5432
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=travelfinder
-
-      - REDIS_HOST=redis://redis:6379
+    env_file:
+      - .env
     volumes:
       - ./backend:/app
 

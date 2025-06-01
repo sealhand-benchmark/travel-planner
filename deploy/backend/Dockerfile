@@ -10,7 +10,6 @@ COPY . .
 
 EXPOSE 8000
 
-# 환경 변수 설정
-ENV ENV_FILE=.env.dev
+COPY ../../.env /app/.env
 
 CMD ["uvicorn", "app.server:app", "--host", "0.0.0.0", "--port", "8000"]
