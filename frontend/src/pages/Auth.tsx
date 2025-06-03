@@ -16,10 +16,11 @@ const Auth = () => {
     setError('');
 
     // 환경변수에서 인증키 확인
-    if (password === "travelfinder_0113!") {
+    if (password === import.meta.env.VITE_AUTH_PASSWORD) {
       localStorage.setItem('travel-auth', 'authenticated');
       navigate('/');
     } else {
+      console.warn('인증키가 올바르지 않습니다.');
       setError('인증키가 올바르지 않습니다.');
     }
     setIsLoading(false);

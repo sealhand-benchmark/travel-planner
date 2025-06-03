@@ -33,6 +33,9 @@ class Settings(BaseSettings):
     # REDIS
     REDIS_HOST: str = "redis://redis:6379"
 
+    # TAVILY API KEY
+    TAVILY_API_KEY: str
+
     class Config:
         env_file = "../.env"
 

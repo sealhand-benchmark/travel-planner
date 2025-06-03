@@ -16,6 +16,11 @@ interface Message {
   quickReplies?: string[];
 }
 
+interface SessionResponse {
+  session_id: string;
+  session_created_at: string;
+}
+
 const Index = () => {
   const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([
@@ -57,7 +62,7 @@ const Index = () => {
         const response = await fetch('http://localhost:8000/api/chat/session_id', {
           method: 'POST',
         });
-        const data = await response.json();
+        const data: SessionResponse = await response.json();
         setSessionId(data.session_id);
       } catch (error) {
         console.error('세션 초기화 실패:', error);
@@ -110,7 +115,7 @@ const Index = () => {
     }
 
     const eventSource = new EventSource(
-      `http://localhost:8000/api/chat/response?session_id=${sessionId}&user_input=${encodeURIComponent(content)}`
+      `http://localhost:8000/api/chat/response/${sessionId}?user_input=${encodeURIComponent(content)}`
     );
     eventSourceRef.current = eventSource;
 
@@ -119,14 +124,18 @@ const Index = () => {
 
     eventSource.onmessage = (event) => {
       try {
-        const data = JSON.parse(event.data);
+          const data = JSON.parse(event.data);
+          
+          console.log("data", data);
+
         if (data.error) {
           console.error('에러 발생:', data.error);
           return;
         }
 
         // chunk 누적
-        accumulatedContent += data;
+        accumulatedContent += data.message;
+        console.log(accumulatedContent);
 
         setMessages(prev => {
           // 마지막 메시지가 assistant(=isUser: false)이고, id가 assistantMessageId면 이어붙임

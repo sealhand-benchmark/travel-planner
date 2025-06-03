@@ -16,7 +16,7 @@ import uuid
 from fastapi import APIRouter, Body, Depends, HTTPException, Query, status
 from sse_starlette.sse import EventSourceResponse, ServerSentEvent
 from api.schema.chat import ResponsePostChatInitConfig
-from app.service.agent.TravelPlanner import SESSION_MEMORIES
+from core.config import SESSION_MEMORIES
 from langchain.memory import ConversationBufferMemory
 from core.config import env
 from app.service.kakaoMap.KakaoMapService import KakaoMapService
